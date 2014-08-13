@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		279F0DC31989B2D300D9F110 /* SerializedTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279F0DC21989B2D300D9F110 /* SerializedTasksViewController.m */; };
+		27B952CD199AF322000BFF41 /* AddindDataToSignalValueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B952CC199AF322000BFF41 /* AddindDataToSignalValueViewController.m */; };
 		27B9CCEC19858ADD0048F1FB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B9CCEB19858ADD0048F1FB /* Foundation.framework */; };
 		27B9CCEE19858ADD0048F1FB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B9CCED19858ADD0048F1FB /* CoreGraphics.framework */; };
 		27B9CCF019858ADD0048F1FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B9CCEF19858ADD0048F1FB /* UIKit.framework */; };
@@ -41,6 +42,8 @@
 		241ADE373AF1432CA8BC60EB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		279F0DC11989B2D300D9F110 /* SerializedTasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerializedTasksViewController.h; sourceTree = "<group>"; };
 		279F0DC21989B2D300D9F110 /* SerializedTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerializedTasksViewController.m; sourceTree = "<group>"; };
+		27B952CB199AF322000BFF41 /* AddindDataToSignalValueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddindDataToSignalValueViewController.h; sourceTree = "<group>"; };
+		27B952CC199AF322000BFF41 /* AddindDataToSignalValueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddindDataToSignalValueViewController.m; sourceTree = "<group>"; };
 		27B9CCE819858ADD0048F1FB /* ReactiveLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactiveLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B9CCEB19858ADD0048F1FB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27B9CCED19858ADD0048F1FB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -138,6 +141,8 @@
 				27BEE93A198599D4007E04C8 /* BasicLoginFormViewController.m */,
 				279F0DC11989B2D300D9F110 /* SerializedTasksViewController.h */,
 				279F0DC21989B2D300D9F110 /* SerializedTasksViewController.m */,
+				27B952CB199AF322000BFF41 /* AddindDataToSignalValueViewController.h */,
+				27B952CC199AF322000BFF41 /* AddindDataToSignalValueViewController.m */,
 			);
 			path = ReactiveLab;
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 				27B9CCFC19858ADD0048F1FB /* RACLAppDelegate.m in Sources */,
 				279F0DC31989B2D300D9F110 /* SerializedTasksViewController.m in Sources */,
 				27B9CD0519858ADD0048F1FB /* RACLViewController.m in Sources */,
+				27B952CD199AF322000BFF41 /* AddindDataToSignalValueViewController.m in Sources */,
 				27B9CCF819858ADD0048F1FB /* main.m in Sources */,
 				27BEE93B198599D4007E04C8 /* BasicLoginFormViewController.m in Sources */,
 			);
