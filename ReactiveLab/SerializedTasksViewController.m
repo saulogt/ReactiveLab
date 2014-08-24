@@ -41,42 +41,68 @@
     });
 }
 
+#define NSLog(...) [self addLog: [NSString stringWithFormat: __VA_ARGS__]];
+
+- (void)setupInterruptedSignal
+{
+    @weakify(self);
+    [[self.btnStrtInterruptedByError rac_signalForControlEvents:UIControlEventTouchUpInside]
+     subscribeNext:^(id x) {
+         @strongify(self);
+         NSLog(@"start btn clicked");
+         //
+         
+         [[[self mainTask: YES] concat] subscribeNext:^(id x) {
+             NSLog(@"mainSubscription next: %@", x);
+         } error:^(NSError *error) {
+             NSLog(@"mainSubscription error: %@", error);
+         } completed:^{
+             NSLog(@"mainSubscription completed");
+         }];
+         
+     }];
+}
+
 -(void) setupSignals
 {
     @weakify(self);
     [[self.btnStart rac_signalForControlEvents:UIControlEventTouchUpInside]
      subscribeNext:^(id x) {
          @strongify(self);
-         [self addLog:@"start btn clicked"];
+         NSLog(@"start btn clicked");
          //
+        
          
-         [[[self mainTask: NO] concat] subscribeNext:^(id x) {
-             [self addLog: [NSString stringWithFormat: @"mainSubscription next: %@", x]];
-         } error:^(NSError *error) {
-             [self addLog: [NSString stringWithFormat: @"mainSubscription error: %@", error]];
-         } completed:^{
-             [self addLog: @"mainSubscription completed"];
-         }];
-         
+         [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+             
+             return [[[self mainTask: NO] concat]
+                     subscribeNext:^(id x) {
+                         NSLog(@"mainTask next: %@", x);
+                     } error:^(NSError *error) {
+                         NSLog(@"mainTask error: %@", error);
+                         [subscriber sendError: error];
+                     } completed:^{
+                         NSLog(@"mainTask completed");
+                         [subscriber sendNext:@"fim"];
+                         [subscriber sendCompleted];
+                     }];
+             
+             
+         }]
+          subscribeNext:^(id x) {
+              NSLog(@"mainSubscription next: %@", x);
+              
+          } error:^(NSError *error) {
+              NSLog(@"mainSubscription error: %@", error);
+          } completed:^{
+              NSLog(@"mainSubscription completed");
+          }];
      }];
-    
-    [[self.btnStrtInterruptedByError rac_signalForControlEvents:UIControlEventTouchUpInside]
-     subscribeNext:^(id x) {
-         @strongify(self);
-         [self addLog:@"start btn clicked"];
-         //
-         
-         [[[self mainTask: YES] concat] subscribeNext:^(id x) {
-             [self addLog: [NSString stringWithFormat: @"mainSubscription next: %@", x]];
-         } error:^(NSError *error) {
-             [self addLog: [NSString stringWithFormat: @"mainSubscription error: %@", error]];
-         } completed:^{
-             [self addLog: @"mainSubscription completed"];
-         }];
-         
-     }];
+
     
 }
+
+#undef NSLog
 
 - (void)viewDidLoad
 {
@@ -84,6 +110,8 @@
     // Do any additional setup after loading the view.
     [self addLog:@"view loaded\nwaiting for start..."];
     [self setupSignals];
+    
+    [self setupInterruptedSignal];
 }
 
 - (void)didReceiveMemoryWarning
